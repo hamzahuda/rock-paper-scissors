@@ -1,16 +1,74 @@
-<script>
-  function getComputerChoice() {
-    let computerChoice;
-    switch (Math.floor(Math.random() * 3)) {
-      case 0:
-        computerChoice = "Rock";
-        break;
-      case 1:
-        computerChoice = "Paper";
-        break;
-      case 2:
-        computerChoice = "Scissors";
-        break;
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script>
+
+    function getComputerChoice() {
+      let computerChoice;
+      switch (Math.floor(Math.random() * 3)) {
+        case 0:
+          computerChoice = "Rock";
+          break;
+        case 1:
+          computerChoice = "Paper";
+          break;
+        case 2:
+          computerChoice = "Scissors";
+          break;
+      }
+      return computerChoice;
     }
-  }
-</script>
+
+    let playerScore = 0;
+    let computerScore = 0;
+    function playRound(playerSelection, computerSelection) {
+      playerSelection = playerSelection.slice(0, 1).toUpperCase() + playerSelection.slice(1).toLowerCase();
+
+      if (playerSelection === computerSelection) {
+        return `You Drew!`;
+      }
+      else if ((playerSelection === "Rock" && computerSelection === "Scissors") || (playerSelection === "Scissors" && computerSelection === "Paper") || (playerSelection === "Paper" && computerSelection === "Rock")) {
+        playerScore++;
+        return `You Win! ${playerSelection} beats ${computerSelection}`;
+      }
+      else {
+        computerScore++;
+        return `You Lost... ${computerSelection} beats ${playerSelection}`;
+      }
+      return "Something went horribly wrong...";
+    }
+
+    function game() {
+      for (let round = 1; round <= 5; round++) {
+        let playerSelection;
+        do {
+          playerSelection = prompt("Rock, Paper or Scissors?")
+          playerSelection = playerSelection.toUpperCase();
+        } while (!["ROCK", "PAPER", "SCISSORS"].includes(playerSelection));
+
+        console.log(playRound(playerSelection, getComputerChoice()));
+      }
+
+      if (playerScore > computerScore) {
+        console.log(`You win the match! ${playerScore} to ${computerScore}`);
+      }
+      else if (playerScore < computerScore) {
+        console.log(`You lost the match... ${playerScore} to ${computerScore}`);
+      }
+      else {
+        console.log(`You drew, tied at a score of ${playerScore}`)
+      }
+    }
+  </script>
+</head>
+
+<body>
+
+</body>
+
+</html>
