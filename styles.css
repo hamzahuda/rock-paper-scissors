@@ -1,0 +1,29 @@
+img {
+  width: 300px;
+  height: auto;
+}
+
+img:hover {
+  transform: scale(1.1);
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+}
+
+#title {
+  font-size: 36px;
+  font-weight: 900;
+  margin-top: 50px;
+}
+
+.scorecard {
+  font-size: xx-large;
+}
+
+#scores {
+  text-align: center;
+}
